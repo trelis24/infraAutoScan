@@ -1,0 +1,41 @@
+FolderName: 'ffuf'
+Binary: 'ffuf'
+Wordlists:
+  Directories: True
+  Files: True
+WordlistsType: 'Small'
+WordlistTest: # directories that do not exist. Used to automatically set filters
+  - 'denialbundle'
+  - 'earwaxbundle'
+  - 'earwax'
+  - 'gloryhatejudgmentexclusivegloryhatejudgmentexclusive'
+  - 'gloryhatejudgmentexclusive'
+  - 'glory'
+  - 'ladder'
+  - 'affordladder'
+WordlistsDirectories:
+  Big:
+    - 'files/raft-large-directories.txt'
+  Medium:
+    - 'files/raft-medium-directories.txt'
+  Small:
+    - 'files/raft-small-directories.txt'
+WordlistsFiles:
+  Big:
+    - 'files/raft-large-files.txt'
+  Medium:
+    - 'files/raft-medium-files.txt'
+  Small:
+    - 'files/raft-small-files.txt'
+WordlistsExclusion:
+  - 'img'
+  - 'jquery'
+  - 'bootstrap'
+  - 'css'
+Flags:
+  - '-t 40': False # Threads
+  - '-p 0': False # Time between words
+  - '-ic': True
+UserAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.6422.60/61 Safari/537.36'
+Depth: 1
+Filter: '' # Automatically set if not defined

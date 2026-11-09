@@ -1,0 +1,17 @@
+FolderName: 'testssl'
+Binary: '/bin/testssl/testssl.sh'
+Source:
+  Nmap: True
+  Manual: False # if true fill manual section
+Manual:
+  - # IP:Port or Host:Port
+Flags:
+  - '--parallel': False # it can trigger errors
+  - '--overwrite': True
+  - '--connect-timeout 15': False
+  - '--quiet': True
+  - '--openssl-timeout 15': True
+  - '--ssl-native': False # it can trigger errors
+
+# ToDo
+# - Manual entries

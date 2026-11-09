@@ -1,0 +1,65 @@
+FolderName: 'nmap'
+Binary: 'nmap'
+Ports:
+  - 'Fast': False
+  - 'Top1000': False
+  - 'Full': True
+Protocol:
+  'TCP': True
+  'UDP': True # Always Fast (top100 ports)
+Flags:
+  - '-A': False # No sense if Advanced is enabled
+  - '-sC': False # No sense if Advanced is enabled
+  - '-O': False
+  - '-sV': True
+  - '-v': True
+  - '-Pn': True
+Advanced:
+  Protocol:
+    'TCP': True
+    'UDP': False
+  Include:
+    - 'discovery'
+    - 'malware'
+    - 'version'
+    - 'vuln'
+    - 'external'
+    - 'auth'
+    - 'safe'
+    - 'default'
+    - 'intrusive'
+  Exclude:
+    - 'brute'
+    - 'dos'
+    - 'exploit'
+    - 'fuzzer'
+    - 'broadcast'
+    - 'dns-blacklist'
+    - 'targets-asn'
+    - 'dns-brute'
+    - 'fcrdns'
+    - 'ipidsec'
+    - 'path-mtu'
+    - 'http-useragent-tester'
+    - 'http-vhosts'
+    - 'subdomains'
+    - 'sniffer-detect'
+    - 'clock-skew'
+    - 'reverse-index'
+    - 'port-states'
+    - 'ipidseq'
+    - 'unusual-port'
+    - 'smb2-time'
+    - 'ssh-run'
+    - 'http-date'
+    - 'http-chrono'
+    - 'ssl-date'
+    - 'firewall-bypass'
+    - 'http-unsafe-output-escaping'
+    - 'http-traceroute'
+    - 'http-sql-injection'
+    - 'http-slowloris-check'
+    - 'http-referer-checker'
+    - 'http-mobileversion-checker'
+    - 'http-robtex-shared-ns'
+    - 'hostmap-robtex'

@@ -1,0 +1,24 @@
+FolderName: 'nuclei'
+Binary: 'nuclei'
+TemplatesFolder: 'nucleiTemplates'
+PayloadsFolder: 'payloads'
+RequestsFolder: 'requests'
+BaseRequestName: 'base.txt'
+OneTimePayloads:
+  - 'headersVersion': True
+  - 'httpMethodTrace': True
+  - 'securityHeaders': True
+Payloads:
+  - 'SQLiError': False
+  - 'SQLiBlind': False
+  - 'CommandInjection': False
+  - 'CommandInjectionTime': False
+  - 'LFI': True
+  - 'RFI': False
+  - 'XSS': False
+  - 'XEE': False
+  - 'templateInjection': False
+Proxy: '-p http://127.0.0.1:8080' # Format: -p http://127.0.0.1:8080
+
+# TODO
+## Normal page does not return a 200 (302 if cookie is not valid or an other error)

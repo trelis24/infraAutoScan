@@ -1,0 +1,22 @@
+ProjectDir: '' # leave empty if it is the same folder where the script is executed
+ProjectName: ''
+User: 'root'
+ConfigDir: 'config'
+ModulesDir: 'modules'
+ResultsDir: 'results'
+ScansDir: 'scans'
+LogsDir: 'logs'
+WordlistsDir: 'wordlists'
+Scope: 'scope.txt' # path to file
+Modules:
+  - 'nmap': True
+  - 'checkHTTP': True
+  - 'testssl': True
+  - 'ffuf': True
+  - 'checkHTTPFfuf': True
+Authentication:
+  'Cookie': '' # Session:asdfasdf
+  'Token': '' # Authorization: Bearer <token>
+ScanType:
+  'noAuth': True
+  'Auth': False

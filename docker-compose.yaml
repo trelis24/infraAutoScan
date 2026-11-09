@@ -1,0 +1,14 @@
+services:
+  infraautoscan:
+    build: .
+    cap_add:
+      - NET_RAW
+      - NET_ADMIN
+    volumes:
+      - ./config:/app/config
+      - ./results:/app/results
+      - ./scans:/app/scans
+      - ./logs:/app/logs
+      - ./scope.txt:/app/scope.txt
+    stdin_open: true
+    tty: true
