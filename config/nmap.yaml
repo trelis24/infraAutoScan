@@ -14,6 +14,7 @@ Flags:
   - '-sV': True
   - '-v': True
   - '-Pn': True
+  - '--exclude-ports 1720,10000-10005,47001-65535': True
 Advanced:
   Protocol:
     'TCP': True
