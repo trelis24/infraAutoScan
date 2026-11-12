@@ -129,10 +129,15 @@ if __name__ == '__main__':
 	install_apt('python3-venv')
 	cmd = 'python3 -m venv venv'
 	execute(cmd)
+	user = os.getlogin()
+	cmd = f'chown -R {user}:{user} venv'
+	execute(cmd)
 	print ('    - Install pip in virtual enviroment')
 	cmd = 'sudo venv/bin/python3 files/get-pip.py'
 	result = execute(cmd)
-	if not 'Successfully installed' in result:
+	if isinstance(result,tuple):
+		result = result[0]
+	if not 'Successfully installed pip' in result:
 		print ('\n[!] Error installing pip.')
 		exit(0)
 
