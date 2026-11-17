@@ -116,13 +116,14 @@ def parse_json(json_data):
 							if c not in results['ciphers'][key]:
 								results['ciphers'][key].append(c)
 			except:
-				t = target['cipherTests']
-				for cipher in t:
-					for key in results['ciphers'].keys():
-						if key in cipher['finding'] and 'cipherorder' not in cipher['id']:
-							c = list(filter(None, cipher['finding'].split(' ')))[1]
-							if c not in results['ciphers'][key]:
-								results['ciphers'][key].append(c)
+				if 'cipherTests' in target.keys():
+					t = target['cipherTests']
+					for cipher in t:
+						for key in results['ciphers'].keys():
+							if key in cipher['finding'] and 'cipherorder' not in cipher['id']:
+								c = list(filter(None, cipher['finding'].split(' ')))[1]
+								if c not in results['ciphers'][key]:
+									results['ciphers'][key].append(c)
 
 			# Certs
 			try:

@@ -87,7 +87,10 @@ def read_xml(input_file):
 
 def read_file(input_file):
 	with open(input_file, 'r') as f:
-		data = f.read().splitlines() 
+		try:
+			data = f.read().splitlines() 
+		except:
+			return False
 	return data
 
 def write_json(data, output_dir, output_filename):

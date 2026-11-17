@@ -10,6 +10,7 @@ WordlistsDir: 'wordlists'
 Scope: 'scope.txt' # path to file
 Modules:
   - 'nmap': True
+  - 'nuclei': True
   - 'checkHTTP': True
   - 'testssl': True
   - 'ffuf': True

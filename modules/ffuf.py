@@ -15,12 +15,15 @@ def run(globalConf,scansDir,resultsDir):
 	print ('\n[*] Ffuf (noAuth)')
 	wordlists = utilitat.get_wordlists(config,ffufDir)
 	scope = get_scope(resultsDir)
-	ffuf(scope,ffufDir,config,wordlists,'')
-	if auth:
-		print ('\n[*] Ffuf (Auth)')
-		ffuf(scope,ffufDir,config,wordlists,auth)
+	if scope:
+		ffuf(scope,ffufDir,config,wordlists,'')
+		if auth:
+			print ('\n[*] Ffuf (Auth)')
+			ffuf(scope,ffufDir,config,wordlists,auth)
 
-	parse_results(ffufDir,ffufResultsDir)
+		parse_results(ffufDir,ffufResultsDir)
+	else:
+		print ('    [!] Error no scope found!')
 
 # get scope from websites results folder. Get 200.
 def get_scope(resultsDir):

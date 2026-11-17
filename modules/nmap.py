@@ -332,6 +332,7 @@ def parse(nmapDir,resultsNmap,config):
 		hosts = xml.find_all('host')
 		for host in hosts:
 			ip = host.find('address')['addr']
+			utilitat.append_file(f'{ip}\n',resultsNmap,'hosts_up.txt')
 			ports = host.find_all('port')
 			for port in ports:
 				state = port.find('state')['state']

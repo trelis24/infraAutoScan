@@ -5,19 +5,22 @@ from pathlib import Path
 
 logger = logging.getLogger(__name__)
 
-def create_project_dir(projectDir,resultsDir,scansDir,projectName):
+def create_project_dir(projectDir,resultsDir,scansDir,projectName,user):
 	logging.info('Create project folders')
 	if not projectDir:
 		projectDir = os.getcwd()
 	
 	# Project
 	projectDir = utilitat.new_folder(projectDir,projectName)
+	change_permisions(projectDir,user)
 
 	# Results
 	resultsDir = utilitat.new_folder(projectDir,resultsDir)
+	change_permisions(resultsDir,user)
 
 	# Scans
 	scansDir = utilitat.new_folder(projectDir,scansDir)
+	change_permisions(scansDir,user)
 
 	return projectDir,resultsDir,scansDir
 
@@ -60,15 +63,11 @@ def checkConf(globalConf):
 		print (msg)
 		exit(0)
 
-def change_permisions(projectDir,logsName,user):
+def change_permisions(folder,user):
 	logger.info('Change permissions')
-	cmd = 'chown -R {}:{} {}'.format(user,user,projectDir)
+	cmd = 'chown -R {}:{} {}'.format(user,user,folder)
 	r = utilitat.execute(cmd,'DEVNULL','DEVNULL')
 
-	#logsDir = os.path.join(rootDir,logsName)
-	cmd = 'chown -R {}:{} {}'.format(user,user,logsName)
-	r = utilitat.execute(cmd,'DEVNULL','DEVNULL')
-	
 
 if __name__ == '__main__':
 	# The check is just for installaton requirements script to verify no dependencies are left wihtout executing the scans
@@ -99,7 +98,7 @@ if __name__ == '__main__':
 	checkConf(globalConf)
 
 	print ('    - Create project folders')
-	projectDir,resultsDir,scansDir = create_project_dir(globalConf['ProjectDir'],globalConf['ResultsDir'],globalConf['ScansDir'],globalConf['ProjectName'])
+	projectDir,resultsDir,scansDir = create_project_dir(globalConf['ProjectDir'],globalConf['ResultsDir'],globalConf['ScansDir'],globalConf['ProjectName'],globalConf['User'])
 
 	print ('    - Load modules')
 	modules = globalConf['Modules']
@@ -115,7 +114,7 @@ if __name__ == '__main__':
 			else:
 				module.run(globalConf,scansDir,resultsDir)
 	
-	change_permisions(projectDir,globalConf['LogsDir'],globalConf['User'])
+	change_permisions(globalConf['LogsDir'],globalConf['User'])
 
 	logger.info('***** Hora fi: {}'.format(datetime.datetime.now().strftime("%X/%d_%m_%Y")))
 	logger.info('***************** Fi *****************')
